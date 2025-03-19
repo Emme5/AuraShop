@@ -4,7 +4,7 @@
     "slug": "Aurashop",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/Lineman.png",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -27,14 +27,14 @@
       "versionCode": 1,
       "ndkVersion": "26.0.10792818",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/adaptive-icon.png",
+        "foregroundImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwWw5k7-OeG8hrlKAYrVcfX4aTMxOe0KFCeA&s",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/Lineman.png"
     },
     "plugins": [
       "expo-router",
