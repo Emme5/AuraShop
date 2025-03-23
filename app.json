@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Aurashop",
-    "slug": "Aurashop",
+    "slug": "aurashop",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/Lineman.png",
@@ -29,7 +29,10 @@
       "adaptiveIcon": {
         "foregroundImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTwWw5k7-OeG8hrlKAYrVcfX4aTMxOe0KFCeA&s",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "permissions": [
+        "android.permission.RECORD_AUDIO"
+      ]
     },
     "web": {
       "bundler": "metro",
@@ -49,6 +52,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "2f64323a-5e0e-4775-ade6-c83905188b74"
+      }
+    },
+    "owner": "mongkol251"
   }
 }

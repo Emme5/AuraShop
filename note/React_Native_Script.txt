@@ -1,0 +1,755 @@
+*******************************************************
+Basic React Native with Expo Online
+*******************************************************
+//--------------------------------------------------------------
+# วันที่ 1
+//--------------------------------------------------------------
+ตรวจสอบความพร้อมของเครื่องมือ
+
+VS Code
+---
+$ code -v
+
+Node JS
+---
+$ node -v
+$ npm -v
+$ npx -v
+
+Git
+---
+$ git  version
+
+Java JDK
+---
+$ java -version
+$ set JAVA_HOME
+
+Android SDK
+---
+$ android list target  (Windows)
+$ avdmanager list target (MacOS)
+
+MySQL
+---
+$ mysql -u root -p
+$ mysql -P 3333 -u root -p
+
+ADB Devices
+---
+$ adb devices
+
+ตรวจสอบเวอร์ชั่น React Native CLI
+---
+$ react-native -v
+
+ถอน React Native CLI เวอร์ชั่นปัจจุบันออก
+---
+$ npm uninstall -g react-native-cli
+
+ถอนการติดตั้งบน MacOS
+---
+$ sudo npm uninstall -g react-native-cli
+
+--------------------------------
+ขึ้นโปรเจ็กต์ด้วย Expo CLI
+--------------------------------
+
+Step 1: คำสั่งขึ้นโปรเจ็กต์ด้วย Expo CLI
+---
+npx create-expo-app FirstReactNativeExpo --template blank-typescript
+
+Step 2: ทำการเปลี่ยน path เข้าโปรเจ็กต์
+---
+cd FirstReactNativeExpo
+
+Step 3: รัน Expo ด้วยคำสั่ง
+---
+npx expo start
+
+Step 4: ลองรันขึ้นอุปกรณ์จริง
+---
+เช็คว่ามีการต่อมือถือกับคอมพิวเตอร์หรือยัง
+---
+adb devices
+
+คำสั่งรันติดตั้งบน Android
+---
+npm run android
+
+คำสั่งรันติดตั้งบน iOS (ต้องใช้เครื่อง macOS)
+---
+npm run ios
+
+Step 5: ทดสอบรันขึ้น Web App
+---
+npm run web
+
+-------------------------------------------
+ขึ้นโปรเจ็กต์ด้วย React Native CLI
+-------------------------------------------
+
+การขึ้นโปรเจ็กต์ด้วย React Native App ด้วย React Native CLI
+---
+Step 1: คำสั่งสร้างโปรเจ็กต์
+---
+$ npx @react-native-community/cli init hellornappt --version 0.72.4
+
+Step 2: เปิดขึ้นด้วย VSCode
+---
+$ code hellornapp -r
+
+Step 3: Start ตัว Metro (JS Bundle)
+---
+$ npm start
+
+*** หาก port 8081 ไม่ว่างให้ทำการเคลียร์ก่อน
+$ taskkill /F /IM node.exe  (Windows)
+
+$ ps aux | grep node (MacOS)
+$ kill -9 PID  (MacOS)
+
+Step 4: ทดสอบสั่ง Run ขึ้นมือถือ Android
+--
+$ npm run android
+
+Step 5: ทดสอบ Run บนมือถือ iOS
+---
+$ npm run ios
+
+Note:: การ Config Eslint (.eslintrc.js)
+---
+module.exports = {
+  root: true,
+  semi: [2, "never"],
+  extends: '@react-native-community',
+}
+
+Note:: การ Config Prettier (.prettierrc.js)
+---
+module.exports = {
+  bracketSpacing: true,
+  jsxBracketSameLine: true,
+  singleQuote: true,
+  trailingComma: 'all',
+  arrowParens: 'avoid',
+  tabWidth: 2,
+  semi: false,
+}
+
+-------------------------------------------------------
+วันที่ 2
+-------------------------------------------------------
+การขึ้นโปรเจ็กต์ด้วย React Native App ด้วย React Native CLI
+---
+Step 1: คำสั่งสร้างโปรเจ็กต์
+---
+npx react-native@latest init RNRestAPI
+
+Step 2: เปิดโปรเจ็กต์เข้า VS Code
+---
+code RNRestAPI
+
+Step 3: Start ตัว Metro (JS Bundle)
+---
+npx react-native start
+
+Step 4: ทดสอบสั่ง Run ขึ้นมือถือ Android
+--
+npx react-native run-android
+
+Step 5: ติดตั้ง Dependency สำหรับทำ Navigation
+---
+จำเป็น
+---
+npm install @react-navigation/native@6.0.7
+npm install @react-navigation/native-stack@6.3.0
+npm uninstall react-native-screens@3.22.0
+npm uninstall react-native-safe-area-context@3.22.0
+
+npm install @react-navigation/native@6.0.7 @react-navigation/native-stack@6.3.0 react-native-screens@3.10.2 react-native-safe-area-context@3.22.0
+
+ส่วนเสริม
+----
+npm install react-native-reanimated@2.2.x
+npm install @react-native-community/masked-view@0.1.11
+npm install react-native-gesture-handler@2.2.x
+
+สำหรับ Tab Navigation
+---
+npm install @react-navigation/bottom-tabs@6.1.x
+
+Step 6: ติดตั้ง react-native-ionicons dependency
+---
+npm install react-native-ionicons@4.6.x
+npx react-native link react-native-ionicons
+
+หาภาพไอคอน
+---
+https://ionic.io/ionicons/v4
+https://icons.expo.fyi/
+https://oblador.github.io/react-native-vector-icons/
+
+Step 7: ติดตั้ง react-native-paper
+---
+npm install react-native-paper@4.11.x
+
+Step 8: การสั่ง build แอพเป็น Release
+---
+npx react-native run-android --variant=release
+
+ไฟล์ apk จะอยู่ที่ android/app/build/outputs/apk/release/app-release.apk
+
+เพิ่มเติม
+----
+การทำ custom font  ใน React Native
+---
+Step 1: เตรียมไฟล์ fonts มาไว้ที่ assets/fonts
+Step 2: จากนั้นสร้างไฟล์ react-native-config.js ที่ root
+---
+module.exports = {
+  project: {
+    ios: {},
+    android: {}, // grouped into "project"
+  },
+  assets: ["./assets/fonts/"], // stays the same
+};
+
+
+Step 3: เพิ่มคำสั่ง Link
+---
+npx react-native link
+
+หากต้องการใช้คำสั่ง npm run android
+---
+ให้ติดตั้ง npm install -g react-native-cli ก่อน
+
+เปลี่ยนฟอนต์ใน android
+---
+สร้างโฟลเดอร์ฟอนต์ใน main/res/font แล้ววางฟอนต์ไว้
+จากนั้นแก้ไขที่ไฟล์ styles.xml 
+---
+<item name="android:fontFamily">@font/notosanthai</item>
+
+rnrestapi
+Combining Drawer Tab and Stack navigators
+
+import React from 'react'
+import Navigation from './src/navigations/Navigation'
+
+const App = () => {
+  return <Navigation />
+}
+
+export default App
+
+
+npx react-native init AfterCourseEP1
+code AfterCourseEP1 -r
+npx react-native run-android
+
+การตรวจสอบขนาดหน้าจอ
+---
+import { useWindowDimensions  } from "react-native"
+
+const size = useWindowDimensions()
+const width = size.width
+const height = size.height
+
+ทิศทางการหมุนหน้าจอ
+---
+ตรวจสอบสถานะการเชื่อมต่อ Internet
+---
+npm install @react-native-community/netinfo
+
+การ link ไปยังแอปอื่นๆ
+---
+npm install react-native-communications
+
+-------------------------------------------------------
+วันที่ 3
+-------------------------------------------------------
+ต่อเนื้อหา FirstExpo
+---
+Section 4
+---
+เรียนรู้ UI Core Component ต่าง ๆ ใน React Native
+
+View
+Touchable
+Image
+Alert
+Modal
+StatusBar
+TextInput
+Switch
+Flatlist
+ScrollView
+SafeAreaView
+
+-------------------------------------------------------
+วันที่ 4
+-------------------------------------------------------
+Section 5: UI ด้วย Styling with NativeWind
+Section 6: การเข้าถึง API ของระบบ
+Section 7: กล้องถ่ายภาพและการสแกนโค้ด
+
+Step 1: สร้างโปรเจ็กต์ "Aurashop" ด้วย Expo
+---
+คำสั่งสร้างโปรเจ็กต์ Expo ด้วย create-expo-app cli เวอร์ชั่น Expo ล่าสุด
+---
+$ npx create-expo-app@latest Aurashop -t tabs
+
+คำสั่งสร้างโปรเจ็กต์ Expo ด้วย create-expo-app cli เวอร์ชั่นระบุเวอร์ชั่น
+---
+$ npx create-expo-app@52 Aurashop -t tabs
+
+คำสั่ง Run Expo App
+---
+$ npx expo start
+
+Step 2: ปรับโครงสร้างโปรเจ็กต์ให้รองรับแบบ Tabs
+---
+2.1 ลบไฟล์ที่ไม่ต้องการออกก่อน
+2.2 เพิ่มไฟล์ (tabs)/home.tsx
+---
+// rnf
+import { Text, View } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+
+export default function Home() {
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={{flex: 1, justifyContent: "center", alignItems: "center"}}>
+        <Text>Home Screen</Text>
+      </View>
+    </SafeAreaView>
+  )
+}
+---
+2.3 เพิ่มไฟล์ (tabs)/profile.tsx
+2.3 เพิ่มไฟล์ (tabs)/create.tsx
+2.4 เพิ่มไฟล์ (tabs)/bookmark.tsx
+2.5 เพิ่มไฟล์ (tabs)/setting.tsx
+
+2.6 เพิ่มไฟล์ (tabs)/_layout.tsx
+---
+// rnf
+import React from "react"
+import Octicons from '@expo/vector-icons/Octicons'
+import { Tabs } from "expo-router"
+
+function TabBarIcon(props: {
+  name: React.ComponentProps<typeof Octicons>["name"]
+  color: string
+}) {
+  return <Octicons size={24} style={{ marginBottom: 5 }} {...props} />
+}
+
+export default function TabLayout() {
+  return (
+    <Tabs
+      screenOptions={{
+        tabBarActiveTintColor: "#FFA001",
+        tabBarInactiveTintColor: "#CDCDE0",
+        tabBarShowLabel: true,
+        tabBarLabelStyle: { fontSize: 14, color: '#ffffff' }, // ขนาดตัวอักษรของ Tab
+        tabBarStyle: {
+          backgroundColor: "#161622",
+          borderTopWidth: 1,
+          borderTopColor: "#232533",
+          height: 84,
+          paddingTop: 10,
+        },
+      }}
+    >
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: "หน้าหลัก",
+          tabBarIcon: ({ color }) => <TabBarIcon name="home" color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: "โปรไฟล์",
+          tabBarIcon: ({ color }) => <TabBarIcon name="person" color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="create"
+        options={{
+          title: "เพิ่มสินค้า",
+          tabBarIcon: ({ color }) => <TabBarIcon name="plus-circle" color={color} />,
+        }}
+      />
+
+      <Tabs.Screen
+        name="bookmark"
+        options={{
+          title: "ที่บันทึกไว้",
+          tabBarIcon: ({ color }) => (
+            <TabBarIcon name="bookmark" color={color} />
+          ),
+        }}
+      />
+
+      <Tabs.Screen
+        name="setting"
+        options={{
+          title: "ตั้งค่า",
+          tabBarIcon: ({ color }) => <TabBarIcon name="gear" color={color} />,
+        }}
+      />
+    </Tabs>
+  )
+}
+---
+2.7 เพิ่มไฟล์ app/index.tsx
+---
+import { Redirect } from 'expo-router'
+import React from 'react'
+
+export default function Index() {
+  return (
+    <Redirect href="/(tabs)/home" />
+  )
+}
+---
+2.8 เพิ่มไฟล์ app/_layout.tsx
+---
+import { Stack } from 'expo-router'
+
+export default function RootLayout() {
+  return (
+    <Stack>
+      <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+      <Stack.Screen name="index" options={{ headerShown: false }} />
+    </Stack>
+  )
+}
+
+Step 3: ติดตั้ง NativeWind สำหรับ Style UI
+---
+3.1 ติดตั้งตามขั้นตอนจาก docs ของ nativewind
+https://www.nativewind.dev/getting-started/expo-router
+---
+npx expo install nativewind tailwindcss
+
+3.2 สร้างไฟล์ tailwind.config.ts
+---
+npx tailwindcss init
+---
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // NOTE: Update this to include the paths to all of your component files.
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
+  presets: [require("nativewind/preset")],
+  theme: {
+    extend: {
+      rotate: {
+        '30': '30deg',
+      },
+    },
+  },
+  variants: {
+    extend: {
+      rotate: ['responsive', 'hover', 'focus'],
+    },
+  },
+  plugins: [],
+}
+---
+3.3 สร้างไฟล์ global.css
+----
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+3.4 สร้างไฟล์ babel.config.js
+---
+module.exports = function (api) {
+  api.cache(true);
+  return {
+    presets: [
+      ["babel-preset-expo", { jsxImportSource: "nativewind" }],
+      "nativewind/babel",
+    ],
+  };
+};
+
+---
+3.5 สร้างไฟล์  metro.config.js
+---
+npx expo customize metro.config.js
+---
+// Learn more https://docs.expo.io/guides/customizing-metro
+const { getDefaultConfig } = require('expo/metro-config');
+const { withNativeWind } = require("nativewind/metro");
+
+/** @type {import('expo/metro-config').MetroConfig} */
+const config = getDefaultConfig(__dirname);
+
+module.exports = withNativeWind(config, { input: "./global.css" });
+---
+3.6 เรียกใช้ไฟล์ global.css ที่ไฟล์ app/_layout.tsx
+---
+// Import your global CSS file
+import "../global.css";
+---
+3.7 ทดสอบการใช้ nativewind ลองเพิ่ม class ที่หน้า (tabs)/home.tsx
+----
+// rnf
+import { Text, View } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context"
+
+export default function Home() {
+  return (
+    <SafeAreaView className="flex-1">
+      <View className="flex-1 items-center justify-center bg-green-500 py-5">
+        <Text className="text-6xl mt-4 font-bold text-center text-blue-500 animate-bounce">
+          Home Screen
+        </Text>
+      </View>
+    </SafeAreaView>
+  )
+}
+
+-------------------------------------------------------
+วันที่ 5
+-------------------------------------------------------
+Section 8: การพัฒนา REST API ด้วย Supabase Rest API
+Section 9: Workshop "AuraShop" เชื่อมต่อกับ Supabase Rest API
+
+ตารางข้อมูลสินค้า (products)
+---
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- เชื่อมกับ auth.users
+    title VARCHAR(255) NOT NULL,
+    description TEXT,
+    price DECIMAL(10, 2) NOT NULL,
+    condition VARCHAR(50), -- เช่น "ใหม่", "มือสอง", "สภาพดี"
+    category VARCHAR(100),
+    location VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ตารางหมวดหมู่สินค้า (categories)
+---
+CREATE TABLE categories (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL UNIQUE,
+    parent_id INT REFERENCES categories(id) ON DELETE SET NULL -- สำหรับหมวดหมู่ย่อย
+);
+
+ตารางรูปภาพสินค้า (product_images)
+---
+CREATE TABLE product_images (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE, -- เชื่อมกับสินค้า
+    image_url TEXT NOT NULL
+);
+
+ตารางสถานะการซื้อขาย (orders หรือ transactions)
+---
+CREATE TABLE orders (
+    id SERIAL PRIMARY KEY,
+    product_id INT REFERENCES products(id) ON DELETE CASCADE, -- สินค้า
+    buyer_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- ผู้ซื้อ
+    seller_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- ผู้ขาย
+    status VARCHAR(50) DEFAULT 'Pending', -- เช่น "Pending", "Completed", "Canceled"
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ตารางรายการโปรด (favorites)
+---
+CREATE TABLE favorites (
+    id SERIAL PRIMARY KEY,
+    user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- ผู้ใช้
+    product_id INT REFERENCES products(id) ON DELETE CASCADE, -- สินค้า
+    added_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ตารางการสนทนา/ข้อความระหว่างผู้ซื้อและผู้ขาย (messages)
+---
+CREATE TABLE messages (
+    id SERIAL PRIMARY KEY,
+    sender_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- ผู้ส่ง
+    receiver_id UUID REFERENCES auth.users(id) ON DELETE CASCADE, -- ผู้รับ
+    product_id INT REFERENCES products(id) ON DELETE CASCADE, -- เชื่อมกับสินค้า
+    message_text TEXT NOT NULL,
+    sent_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+ติดตั้ง Install and initialize the Supabase TypeScript SDK
+---
+npx expo install @supabase/supabase-js @react-native-async-storage/async-storage react-native-url-polyfill
+
+Create a utils/supabase.ts
+---
+import "react-native-url-polyfill/auto"
+import AsyncStorage from "@react-native-async-storage/async-storage"
+import { createClient } from "@supabase/supabase-js"
+
+const supabaseUrl = process.env.EXPO_PUBLIC_SUPABASE_URL
+const supabaseAnonKey = process.env.EXPO_PUBLIC_SUPABASE_ANON_KEY
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error("Missing Supabase environment variables")
+}
+
+export const supabase = createClient(supabaseUrl, supabaseAnonKey, {
+  auth: {
+    storage: AsyncStorage,
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: false,
+  },
+})
+
+-------------------------------------------------------
+วันที่ 6
+-------------------------------------------------------
+ตัวอย่าง Payload สำหรับเพิ่มข้อมูลเข้าตาราง Products ผ่าน API
+https://xxx.supabase.co/rest/v1/products
+---
+{
+  "user_id": "xxxx",
+  "title": "MacBook Pro 2023",
+  "description": "MacBook Pro 14 นิ้ว รุ่นใหม่ล่าสุด สภาพดีมาก",
+  "price": 79900.00,
+  "condition": "ใหม่",
+  "category": "Electronics",
+  "location": "Bangkok"
+},
+{
+    "user_id": "xxx",
+    "title": "iPhone 14 Pro Max",
+    "description": "iPhone 14 Pro Max สี Deep Purple สภาพใหม่เอี่ยม ใช้งานเพียง 1 เดือน",
+    "price": 45000.00,
+    "condition": "มือสอง",
+    "category": "Electronics",
+    "location": "Bangkok"
+  },
+  {
+    "user_id": "xxx",
+    "title": "จักรยานเสือภูเขา Trek",
+    "description": "จักรยานเสือภูเขา Trek X-Caliber 8 ขนาดล้อ 29 นิ้ว สภาพดีมาก",
+    "price": 32000.00,
+    "condition": "มือสอง",
+    "category": "Sport Equipment",
+    "location": "Chiang Mai"
+  },
+  {
+    "user_id": "xxx",
+    "title": "โน้ตบุ๊ค Dell XPS 13",
+    "description": "Dell XPS 13 (2023) Core i7 RAM 16GB SSD 512GB สำหรับงานกราฟิกและการพัฒนา",
+    "price": 58000.00,
+    "condition": "ใหม่",
+    "category": "Electronics",
+    "location": "Phuket"
+  },
+  {
+    "user_id": "xxxx",
+    "title": "โต๊ะไม้สักแท้",
+    "description": "โต๊ะไม้สักแท้ทำมือจากเชียงใหม่ ขนาด 1.5 เมตร x 1 เมตร เหมาะสำหรับงานตกแต่งบ้าน",
+    "price": 15000.00,
+    "condition": "ใหม่",
+    "category": "Furniture",
+    "location": "Chiang Mai"
+  },
+  {
+    "user_id": "xxx",
+    "title": "รองเท้าวิ่ง Adidas Ultraboost",
+    "description": "Adidas Ultraboost 22 สีดำ ไซส์ 42 ใช้งานเพียง 3 ครั้ง",
+    "price": 4500.00,
+    "condition": "มือสอง",
+    "category": "Sport Equipment",
+    "location": "Bangkok"
+  }
+
+-------------------------------------------------------
+วันที่ 7
+-------------------------------------------------------
+sql สำหรับเพิ่มข้อมูลเข้าตาราง categories และ conditions
+---
+-- สำหรับตาราง categories
+INSERT INTO public.categories (id, name_th, name_en, status) VALUES
+(1, 'อิเล็กทรอนิก', 'Electronics', true),
+(2, 'เสื้อผ้าและเครื่องประดับ', 'Clothing and accessories', true),
+(3, 'บ้านและสวน', 'Home & Garden', true),
+(4, 'กีฬา', 'Sports', true),
+(5, 'ความบันเทิง', 'Entertainment', true),
+(6, 'แม่และเด็ก', 'Mom & Kid', true),
+(7, 'งานอดิเรก', 'Hobby', true),
+(8, 'เบ็ดเตล็ด', 'Miscellaneous', true),
+(9, 'อื่นๆ', 'Other', true);
+
+-- สำหรับตาราง conditions
+INSERT INTO public.conditions (id, name_th, name_en, status) VALUES
+(1, 'ใหม่', 'New', true),
+(2, 'มือสอง - เหมือนใหม่', 'Used - Like New', true),
+(3, 'มือสอง - สภาพดี', 'Used - Good', true),
+(4, 'มือสอง - สภาพพอใช้', 'Used - Fair', true);
+---
+
+ติดตั้ง Libray เพิ่มเติม
+
+1. การจัดการรูปภาพและ UI
+---
+npx expo install expo-image-manipulator react-native-image-viewing expo-navigation-bar
+
+2. Internationalization และ Date handling
+---
+npx expo install expo-localization
+npm install i18next react-i18next date-fns date-fns-tz
+
+3. Gesture Handling
+---
+npx expo install react-native-gesture-handler
+
+4. Utility Libraries
+---
+npm install lodash
+
+5. Dev Dependencies
+---
+npm install -D @types/lodash
+
+-------------------------------------------------------
+วันที่ 8
+-------------------------------------------------------
+Section 10: การ Build และ Deploy แอปผ่าน EAS Build
+
+Set up an Android device with a development build
+---
+npm install -g eas-cli
+
+ติดตั้เสร็จแล้ว ลองเช็คว่าเจอมั้ย
+---
+eas --version
+
+Create an Expo account and login
+---
+eas login
+
+Configure your project
+---
+eas build:configure
+
+Create a build
+---
+eas build --platform android --profile preview
+
+คำสั่งเมื่อต้องการอัพดทแบบ OTA
+---
+คำสั่งนี้จะตั้งค่าการใช้ Expo Updates ในโปรเจกต์ของคุณ และสร้าง Release Channels
+eas update:configure
+
+ตอนอัพเดทสามารถเลือกประเภท
+eas update --branch main --message "Fix layout issues" --platform android
